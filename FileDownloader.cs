@@ -182,16 +182,9 @@ namespace wyUpdate.Downloader
 
             // Just support TLS 1.1, TLS 1.2, and 1.3
             // https://docs.microsoft.com/en-us/dotnet/api/system.net.securityprotocoltype?view=netframework-4.8#System_Net_SecurityProtocolType_SystemDefault
-            ServicePointManager.SecurityProtocol =
 
-                // TLS 1.1
-                (SecurityProtocolType)768
-
-                // TLS 1.2
-                | (SecurityProtocolType)3072
-
-                // TLS 1.3
-                | (SecurityProtocolType)12288;
+            // The official recomendation of Microsoft is to not explicitly specify the TLS Versions. In this case the Runtime uses all 
+            // versions which the OS has to offer. The supported versions per OS can change in the future or may vary because of OS config.
         }
 
         public void Cancel()
